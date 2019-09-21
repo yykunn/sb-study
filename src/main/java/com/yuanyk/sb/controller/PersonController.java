@@ -1,5 +1,6 @@
 package com.yuanyk.sb.controller;
 
+import com.yuanyk.sb.aop.MyLog;
 import com.yuanyk.sb.pojo.Person;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,5 +28,17 @@ public class PersonController {
     @PostMapping(value = "/properties/to/json",consumes = "application/properties",produces = "application/json")
     public Person propertiesToJson(@RequestBody Person person){
         return person;
+    }
+
+    @MyLog("get cz")
+    @GetMapping("/get")
+    public void get(String name,Integer id){
+        System.out.println(name+" "+id);
+    }
+
+    @MyLog("post cz")
+    @PostMapping("/post")
+    public void post(@RequestBody Person person){
+        System.out.println(person);
     }
 }
